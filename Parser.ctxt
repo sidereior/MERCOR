@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Parser
+comment1.params=
+comment1.target=Parser()
+comment2.params=key\ numArgs
+comment2.target=void\ addPrefix(java.lang.String,\ int)
+comment3.params=key\ numArgs
+comment3.target=void\ addInfix(java.lang.String,\ int)
+comment4.params=open\ close
+comment4.target=void\ addDelimiters(java.lang.String,\ java.lang.String)
+comment5.params=text
+comment5.target=java.lang.Object\ parse(java.lang.String)
+comment6.params=s
+comment6.target=void\ eat(java.lang.String)
+comment7.params=
+comment7.target=java.lang.Object\ parse()
+comment8.params=
+comment8.target=java.lang.Object\ atom()
+comment9.params=open\ close
+comment9.target=java.util.ArrayList\ parseList(java.lang.String,\ java.lang.String)
+numComments=10

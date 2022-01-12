@@ -1,0 +1,6 @@
+start
+
+x=closing
+give x
+
+end

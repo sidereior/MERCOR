@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Tokenizer
+comment1.params=text
+comment1.target=Tokenizer(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ next()
+comment3.params=
+comment3.target=void\ skipWhitespace()
+comment4.params=ch
+comment4.target=boolean\ isWhitespace(java.lang.String)
+comment5.params=ch
+comment5.target=boolean\ isAlphaNum(java.lang.String)
+numComments=6

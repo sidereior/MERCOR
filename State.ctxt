@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=State
+comment1.params=
+comment1.target=State()
+comment2.params=one\ two
+comment2.target=void\ setVariableValue(java.lang.Object,\ java.lang.Object)
+comment3.params=one
+comment3.target=java.lang.Object\ getVariableValue(java.lang.String)
+numComments=4

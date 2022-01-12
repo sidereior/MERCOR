@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Interpreter
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=exp\ state
+comment2.target=java.lang.Object\ eval(java.lang.Object,\ State)
+comment3.params=
+comment3.target=java.lang.String\ input()
+comment4.params=fileName
+comment4.target=java.lang.String\ load(java.lang.String)
+numComments=5
