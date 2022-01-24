@@ -3,8 +3,8 @@ import java.io.*;
 public class Tokenizer
 {
   private static final String WHITESPACE = " \n\t\r";
-  private static final String ALPHANUM = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-  
+  private static final String ALPHANUM = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.";
+  //dont use dot for anything else
   private String text;
   private int index;  //index of char to process next
   

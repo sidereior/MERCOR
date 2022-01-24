@@ -1,6 +1,5 @@
 start
-
-x=closing
-give x
-
+enter BNTX
+x=Volume
+give x>3.02
 end

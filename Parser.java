@@ -94,7 +94,12 @@ public class Parser
     }
     catch(NumberFormatException e)
     {
-      return literal;
+      try {
+        return Double.parseDouble(literal);
+      }
+      catch(NumberFormatException r){
+        return literal;
+      }
     }
   }
   
