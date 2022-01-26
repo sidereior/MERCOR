@@ -12,8 +12,8 @@ import java.lang.StringBuilder;
 public class Interpreter {
     private static Scanner in = new Scanner(System.in);
     private static String currStock = "have not set a stock";
-    private static String[] stockList = {"BNTX", "TSLA"};
-    private static String[] commandList = {"Previous close", "Current stock price", "Volume", "Volatility of Week Month"};
+    private static String[] stockList = {"BNTX", "TSLA", "LLNW", "BSFC", "APPL", "MSFT", "GOOGL", "AMZN", "FB", "TSM", "NVDA", "JPM", "JNJ", "UNH", "SPY", "WMT", "LVMUY", "PG", "BAC", "HD", "MA", "BABA", "XOM", "PFE", "ASML", "TM", "DIS", "KO", "CVX", "GDX"};
+    private static String[] commandList = {"Previous close", "Current stock price", "Volume", "Volatility of Week Month", "Average volume three month", "Distance from twohundred Day Simple Moving Average", "Distance from fifty Day Simple Moving Average", "Distance from twenty Day Simple Moving Average", "Major index membership", "Insider ownership", "Shares outstanding", "Market capitalization", "EPS estimate for next year", "Shares float", "EPS estimate for next quarter", "Institutional ownership", "Short interest share", "EPS growth this year", "Short interest ratio", "EPS growth next year", "Analysts' mean target price", "Annual EPS growth past 5 years", "Annual sales growth past 5 years", "Full time employees", "Relative Strength Index", "Relative volume"};
 
     public static void main(String[] args) {
       // test(args);
@@ -23,11 +23,19 @@ public class Interpreter {
 
         p.addPrefix("enter", 1);
 
+        p.addInfix("and", 2);
+
+        p.addInfix("or", 2);
+
+        //p.addPrefix("comment", 1);
+
         p.addInfix(">",2);
 
         //p.addInfix(".",2);
 
         p.addInfix("<",2);
+
+        p.addPrefix("text",1);
 
         p.addInfix("=", 2);
 
@@ -36,6 +44,8 @@ public class Interpreter {
         p.addInfix("-", 2);
 
         p.addInfix("is",2);
+
+        p.addInfix("notis",2);
 
         p.addInfix("*", 2);
 
@@ -47,6 +57,8 @@ public class Interpreter {
 
         p.addPrefix("if", 3);
 
+        p.addPrefix("loop", 2);
+
         Object program = p.parse(load("program.txt"));
 
         eval(program, state);
@@ -56,11 +68,7 @@ public class Interpreter {
     
     
     public static Object eval(Object exp, State state) {
-        if (exp instanceof Integer) {//ERROR HERE
-            //TODO: DOES THIS WORK
-            return (Integer)exp;
-        } 
-        else if (exp instanceof Double) {//ERROR HERE
+        if (exp instanceof Double) {//ERROR HERE
             // the value of an integer is itself
             return (Double)exp;
         } 
@@ -69,7 +77,20 @@ public class Interpreter {
             varName=varName.replaceAll("_"," ");
             Boolean worked=false;
             //System.out.println(varName);
-            
+            //if(!varName.equals("and") || varName.equals("or"))
+            //{
+            if(varName.equals("true"))
+            {
+                return true;
+            }
+            if(varName.equals("false")){
+                return false;
+            }
+            if(varName.substring(0,1).equals("\"") && varName.substring(varName.length()-1).equals("\""))
+            {
+                return varName.substring(1,varName.length()-1);
+            }
+            //a few specialized cases for the language where the syntax is odd from the website
             if(varName.equals("Volatility of Week Month"))//TODO: SPLIT THIS BETWEEN WEEK AND MONTH
             {
                 try{
@@ -82,13 +103,70 @@ public class Interpreter {
                         throw new RuntimeException("invalid stock command/ticker");
                     }
             }
+            if(varName.equals("Average volume three month"))//TODO: SPLIT THIS BETWEEN WEEK AND MONTH
+            {
+                try{
+                    String current=currStock.toString();
+                    String val=Stock.getData(current, "Average volume (3 month)");
+                    Double last=Stock.solveString(val);
+                    //System.out.println(val);
+                    return last;
+                    }
+                    catch(Exception e){
+                        throw new RuntimeException("invalid stock command/ticker");
+                    }
+            }
+            if(varName.equals("Distance from twohundred Day Simple Moving Average"))
+            {
+                try{
+                    String current=currStock.toString();
+                    String val=Stock.getData(current, "Distance from 200-Day Simple Moving Average");
+                    Double last=Stock.solveString(val);
+                    //System.out.println(val);
+                    return last;
+                    }
+                    catch(Exception e){
+                        throw new RuntimeException("invalid stock command/ticker");
+                    }
+            }
+
+            if(varName.equals("Distance from fifty Day Simple Moving Average"))
+            {
+                try{
+                    String current=currStock.toString();
+                    String val=Stock.getData(current, "Distance from 50-Day Simple Moving Average");
+                    Double last=Stock.solveString(val);
+                    //System.out.println(val);
+                    return last;
+                    }
+                    catch(Exception e){
+                        throw new RuntimeException("invalid stock command/ticker");
+                    }
+            }
+
+            if(varName.equals("Distance from twenty Day Simple Moving Average"))
+            {
+                try{
+                    String current=currStock.toString();
+                    String val=Stock.getData(current, "Distance from 20-Day Simple Moving Average");
+                    Double last=Stock.solveString(val);
+                    //System.out.println(val);
+                    return last;
+                    }
+                    catch(Exception e){
+                        throw new RuntimeException("invalid stock command/ticker");
+                    }
+            }
             
             for(String i:commandList)
             {
                 //System.out.println(i);
+               // System.out.println(varName);
+                //System.out.println(i.equals(varName));
                 if(i.equals(varName))
                 {
                     worked=true;
+                    //System.out.println("worked:" + worked);
                 }
             }
             //System.out.println(worked);
@@ -121,10 +199,17 @@ public class Interpreter {
             return state.getVariableValue(varName);
             }
             throw new RuntimeException("cannot find variable/stockTicker:  " + varName);
+        //}
         } else {
             // must be a List
             List list = (List) exp;
-            
+            /*
+            if(list.get(0).equals("comment"))
+            {
+
+            }
+            */
+
             if(list.get(0).equals("start")){ // open-brace subEXP close-brace
                 for(int i=1; i < list.size()-1; i++)
                 {
@@ -143,6 +228,14 @@ public class Interpreter {
                 System.out.println(eval(argument, state));
                 return "OK";
             }
+
+            if(list.get(0).equals("text"))
+            {
+                String argument=(String)list.get(1);
+                return argument;
+            }
+
+            
 
             if (list.get(0).equals("enter")) // enter stock value, store as variable, cannot use any all caps stock tickers
             {
@@ -164,15 +257,35 @@ public class Interpreter {
                 return "OK";
             }
 
+            if(list.get(0).equals("loop"))//loop (condition (action))
+            {   
+                //System.out.println(eval(list.get(1),state));
+                while((Boolean)eval(list.get(1),state))
+                {
+                    eval(list.get(2),state);
+                }
+                return null;
+            }
             
+            //and and or
+
+            if(list.get(1).equals("and"))
+            {
+                return (Boolean)eval(list.get(0),state)==(Boolean)eval(list.get(2),state);
+            }
+            if(list.get(1).equals("or"))
+            {
+                return (Boolean)eval(list.get(0),state)||(Boolean)eval(list.get(2),state);
+            }
+
             if (list.get(0).equals("if")) //if (exp)
             {
-                if((Boolean) true == list.get(1))
+                if(true == (Boolean)eval(list.get(1),state))
                 {
                     return eval(list.get(2),state);
                 }
                 else{//this would be the if
-                    return eval(list.get(2),state);
+                    return eval(list.get(3),state);
                 }
                 //eval parenthessees 
                 //eval 2
@@ -199,6 +312,12 @@ public class Interpreter {
                 Object argument1 = list.get(0);
                 Object argument2 = list.get(2);
                 return (Double)eval(argument1, state)==(Double)eval(argument2, state);
+            }
+            if (list.get(1).equals("notis")) // EXP < EXP
+            {
+                Object argument1 = list.get(0);
+                Object argument2 = list.get(2);
+                return (Double)eval(argument1, state)!=(Double)eval(argument2, state);
             }
             
             if (list.get(1).equals("+")) // EXP + EXP
@@ -254,6 +373,7 @@ public class Interpreter {
             throw new RuntimeException("unable to evaluate:  " + exp);
 
         }
+        //return null;
     }
 
     public static String input() {

@@ -12,7 +12,7 @@ public class Stock {
 
     public static void main(String[] args) {
         try {
-            String val = getData("BNTX", "Volume");
+            String val = getData("BSFC", "Average volume (3 month)");
             System.out.println(val);
             Double last=Stock.solveString(val);
             System.out.println(last);
@@ -87,7 +87,7 @@ public class Stock {
         }
         // do it here:
         //System.out.println(last);
-        if (last.contains("%") || last.contains("M") || last.contains("B")) {
+        if (last.contains("%") || last.contains("M") || last.contains("B") || last.contains("K")) {
             try {
                 //System.out.println("here");
                 String dubs =(last.substring(0, last.length() - 1));

@@ -1,5 +1,7 @@
 start
-enter BNTX
-x=Volume
-give x>3.02
+enter LLNW
+give Current_stock_price
+enter BSFC
+volumevolatility=Average_volume_three_month-Volume
+give volumevolatility
 end
