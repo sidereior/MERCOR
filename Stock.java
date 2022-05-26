@@ -14,17 +14,18 @@ public class Stock {
         try {
             String val = getData("BSFC", "Average volume (3 month)");
             System.out.println(val);
-            Double last=Stock.solveString(val);
+            Double last = Stock.solveString(val);
             System.out.println(last);
-            //Double ret=Double.parseDouble(last);
-            //System.out.println(last);
-            //System.out.println("errored?");
+            // Double ret=Double.parseDouble(last);
+            // System.out.println(last);
+            // System.out.println("errored?");
         } catch (Exception e) {
         }
     }
 
     public static String getData(String quote, String target) throws IOException {
         // formatting target is awlays cpatial first leet of words
+        String timed = "null";
         String SYM = "[" + target + "]";
         URL url = new URL("https://finviz.com/quote.ashx?t=" + quote);
         URLConnection urlConn = url.openConnection();
@@ -34,10 +35,21 @@ public class Stock {
         String result = "didn't work";
         while (line != null) {
             if (line.contains(SYM)) {
-                result = line;
-                break;
+                if (!(line.contains("overallTIME") && line.contains("timeBack"))) {
+                    // System.out.println("timeBack");
+                    timed = "atBack";
+                    result = line;
+                    break;
+                }
+                if (!(line.contains("overallTIME") && line.contains("timeCurr"))) {
+                    // System.out.println("endTime");
+                    timed = "atFront";
+                    result = line;
+                    break;
+                }
             }
             line = buff.readLine();
+            timed += line;
         }
         inStream.close();
         buff.close();
@@ -61,8 +73,7 @@ public class Stock {
             }
             // System.out.println(last);
 
-        }
-        else if (result.contains("</span></b></td>")) {
+        } else if (result.contains("</span></b></td>")) {
             value = result.substring(0, result.indexOf("</span></b></td>"));
             last = value;
             for (int i = value.length() - 1; i >= 0; i--) {
@@ -72,9 +83,8 @@ public class Stock {
                 }
             }
             // System.out.println(last);
-        }
-        else if (result.contains("</b></td>")) {
-            //System.out.println("did this work");
+        } else if (result.contains("</b></td>")) {
+            // System.out.println("did this work");
             value = result.substring(0, result.indexOf("</b></td>"));
             last = value;
             for (int i = value.length() - 1; i >= 0; i--) {
@@ -83,46 +93,45 @@ public class Stock {
                     break;
                 }
             }
-            
+
         }
         // do it here:
-        //System.out.println(last);
+        // System.out.println(last);
         if (last.contains("%") || last.contains("M") || last.contains("B") || last.contains("K")) {
             try {
-                //System.out.println("here");
-                String dubs =(last.substring(0, last.length() - 1));
+                // System.out.println("here");
+                String dubs = (last.substring(0, last.length() - 1));
                 try {
-                     dubs=dubs.replaceAll(",","");
-                     Double fin=Double.parseDouble(dubs);
-                     //System.out.println(fin);
-                     return fin;
-                     
-                 } catch (NumberFormatException b) {
-                     throw new RuntimeException("could not be resolved to type double");
-                 }
+                    dubs = dubs.replaceAll(",", "");
+                    Double fin = Double.parseDouble(dubs);
+                    // System.out.println(fin);
+                    return fin;
+
+                } catch (NumberFormatException b) {
+                    throw new RuntimeException("could not be resolved to type double");
+                }
             } catch (NumberFormatException e) {
                 throw new RuntimeException("could not be resovled to type double");
             }
-        }
-         else {
-             //System.out.println("did this run");
+        } else {
+            // System.out.println("did this run");
             try {
-               // System.out.println("got here tho");
-               // System.out.println(last);
-                //so its with the string
-                String ret2=last;
-                ret2=ret2.replaceAll(",","");
-                //System.out.println("res");
-                //System.out.println(ret2);
-                
-                Double fin=Double.parseDouble(ret2);
-                //System.out.println(fin);
+                // System.out.println("got here tho");
+                // System.out.println(last);
+                // so its with the string
+                String ret2 = last;
+                ret2 = ret2.replaceAll(",", "");
+                // System.out.println("res");
+                // System.out.println(ret2);
+
+                Double fin = Double.parseDouble(ret2);
+                // System.out.println(fin);
                 return fin;
-                
+
             } catch (NumberFormatException b) {
                 throw new RuntimeException("could not be resolved to type double");
             }
         }
-        //return null;
+        // return null;
     }
 }

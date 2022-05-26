@@ -1,7 +1,40 @@
 start
-enter LLNW
-give Current_stock_price
-enter BSFC
-volumevolatility=Average_volume_three_month-Volume
-give volumevolatility
+enter BNTX 
+savings=25000
+numStocks=0
+movingTwoHundredAvgPrice=(Current_stock_price + ((Distance_from_twohundred_Day_Simple_Moving_Average * 0.01)* Current_stock_price))
+if(Current_stock_price>movingTwoHundredAvgPrice)start
+    give text buy
+    numStocks=numStocks+1
+    give text numStocksOwned
+    give numStocks
+    savings=savings-Current_stock_price
 end
+start
+end
+movingTwentyAvgPrice=(Current_stock_price + ((Distance_from_twenty_Day_Simple_Moving_Average * 0.01)* Current_stock_price))
+movingFiftyAvgPrice=(Current_stock_price + ((Distance_from_fifty_Day_Simple_Moving_Average * 0.01)* Current_stock_price))
+loop((movingTwentyAvgPrice) is (movingFiftyAvgPrice) and (savings>0.00))start
+    if((Current_stock_price>movingTwentyPrice)start
+        give text buy
+        give text numStocksOwned
+        numStocks=numStocks+1
+        give numStocks
+        savings=savings-Current_stock_price
+    end
+    start 
+        give text sell
+        give text numStocksOwned
+        numStocks=0
+        give numStocks
+        savings=savings+(Current_stock_price*numStocks)
+    end
+    
+end
+
+end
+
+
+
+
+
