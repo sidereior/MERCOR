@@ -99,7 +99,7 @@ buyOneStock
 **[Further Development:]{.ul}** There are a lot more commands and a lot
 more stocks you can analyze. ***Find a whole list of supported commands
 here:***
-[**[https://tinyurl.com/mercorlang]**](https://tinyurl.com/mercorlang)
+[**[https://tinyurl.com/mercordocumentation]**](https://tinyurl.com/mercordocumentation)
 Additionally, there is a lot more operations and uses for this that are
 still in development such as connection to api's to execute these
 trades, notifications of when you should take specific trades according
