@@ -18,7 +18,7 @@ end
 
 0.8274734973764101
 
-**[Key Takeaways]{.ul}**: doubles, addition, subtraction, division,
+**[Key Takeaways]**: doubles, addition, subtraction, division,
 printing, braces/brackets
 
 **Ex 2:**
@@ -45,7 +45,7 @@ end
 
 4.533
 
-**[Key Takeaways:]{.ul}** entering a stock, changing stocks, stock
+**[Key Takeaways:]** entering a stock, changing stocks, stock
 commands, command operations, negative doubles
 
 **Ex 3:**
@@ -93,29 +93,29 @@ buyOneStock
 
 buyOneStock
 
-**[Key Takeaways:]{.ul}** conditionals, ifs/else, text, loops, is/!is
+**[Key Takeaways:]** conditionals, ifs/else, text, loops, is/!is
 (notis), and/or, iterations of loops
 
 **[Further Development:]{.ul}** There are a lot more commands and a lot
 more stocks you can analyze. ***Find a whole list of supported commands
 here:***
-[**[https://tinyurl.com/mercorlang]{.ul}**](https://tinyurl.com/mercorlang)
+[**[https://tinyurl.com/mercorlang]**](https://tinyurl.com/mercorlang)
 Additionally, there is a lot more operations and uses for this that are
 still in development such as connection to api's to execute these
 trades, notifications of when you should take specific trades according
 to the script you set, and a web application so that anyone can access
 and use this regardless of their ability to code. If you want to help me
 develop this even further, contact me through my github:
-**[[https://github.com/sidereior]{.ul}](https://github.com/sidereior)**
+**[[https://github.com/sidereior]](https://github.com/sidereior)**
 
-**[Upcoming Changes]{.ul}**:
+**[Upcoming Changes]**:
 
 -   Web interaction to perform trades automatically [(in
-    development)]{.ul}
+    development)]
 
--   PaperMoney UI [(in development)]{.ul}
+-   PaperMoney UI [(in development)]
 
--   Unit Testing [(in development)]{.ul}
+-   Unit Testing [(in development)]
 
 -   Feature request/bug address system/community
 
