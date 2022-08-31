@@ -15,9 +15,11 @@ public class State
   {
     map.put(one, two);
   }
+  //Sets variable values
 
   public Object getVariableValue(String one)
   {
     return map.get(one);
   }
+  //Gets variable values
 }

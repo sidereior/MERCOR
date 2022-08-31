@@ -10,13 +10,13 @@ public class Parser
   
   public Parser()
   {
+    //Parser for the language
     prefixMap = new TreeMap<String, Integer>();
     infixMap = new TreeMap<String, Integer>();
     delimiterMap = new TreeMap<String, String>();
   }
   
  //public void addPreConditional
- //https://code.visualstudio.com/docs/java/java-build
 
   public void addPrefix(String key, int numArgs)
   {
@@ -42,6 +42,7 @@ public class Parser
   
   private void eat(String s)
   {
+    //goes through tokens
     if (token.equals(s))
       token = tokenizer.next();
     else
@@ -50,6 +51,7 @@ public class Parser
   
   private Object parse()
   {
+    //Parses atoms
     Object parsed = atom();
     if (infixMap.containsKey(token))
     {
@@ -70,6 +72,7 @@ public class Parser
   
   private Object atom()
   {
+    //Prses individual component
     if (delimiterMap.containsKey(token))
       return parseList(token, delimiterMap.get(token));
     
@@ -105,6 +108,7 @@ public class Parser
   
   private ArrayList<Object> parseList(String open, String close)
   {
+    //Parses a list
     ArrayList<Object> list = new ArrayList<Object>();
     list.add(open);
     eat(open);

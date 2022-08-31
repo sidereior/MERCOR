@@ -11,20 +11,20 @@ import java.lang.StringBuilder;
 public class Stock {
 
     public static void main(String[] args) {
+        //main method just to test stock operations
         try {
             String val = getData("BSFC", "Average volume (3 month)");
             System.out.println(val);
             Double last = Stock.solveString(val);
             System.out.println(last);
-            // Double ret=Double.parseDouble(last);
-            // System.out.println(last);
-            // System.out.println("errored?");
         } catch (Exception e) {
         }
     }
 
     public static String getData(String quote, String target) throws IOException {
-        // formatting target is awlays cpatial first leet of words
+        //Takes in a quote and a target and getsData for given stock
+        //quote is the stock you are looking at
+        //target is the data you are looking for
         String timed = "null";
         String SYM = "[" + target + "]";
         URL url = new URL("https://finviz.com/quote.ashx?t=" + quote);
@@ -60,6 +60,8 @@ public class Stock {
     }
 
     public static Double solveString(String result) {
+        //Takes in a string and solves it
+        //Parses it into a valuable number
         String value = "didn't work";
         String last = "no work";
         if (result.contains("</small></b></td>")) {
@@ -71,9 +73,7 @@ public class Stock {
                     break;
                 }
             }
-            // System.out.println(last);
-
-        } else if (result.contains("</span></b></td>")) {
+                   } else if (result.contains("</span></b></td>")) {
             value = result.substring(0, result.indexOf("</span></b></td>"));
             last = value;
             for (int i = value.length() - 1; i >= 0; i--) {
@@ -82,9 +82,8 @@ public class Stock {
                     break;
                 }
             }
-            // System.out.println(last);
         } else if (result.contains("</b></td>")) {
-            // System.out.println("did this work");
+            //parses end of the stock data
             value = result.substring(0, result.indexOf("</b></td>"));
             last = value;
             for (int i = value.length() - 1; i >= 0; i--) {
@@ -95,16 +94,13 @@ public class Stock {
             }
 
         }
-        // do it here:
-        // System.out.println(last);
+        //Does abbreviations for for numbers magnitude
         if (last.contains("%") || last.contains("M") || last.contains("B") || last.contains("K")) {
             try {
-                // System.out.println("here");
                 String dubs = (last.substring(0, last.length() - 1));
                 try {
                     dubs = dubs.replaceAll(",", "");
                     Double fin = Double.parseDouble(dubs);
-                    // System.out.println(fin);
                     return fin;
 
                 } catch (NumberFormatException b) {
@@ -114,18 +110,11 @@ public class Stock {
                 throw new RuntimeException("could not be resovled to type double");
             }
         } else {
-            // System.out.println("did this run");
             try {
-                // System.out.println("got here tho");
-                // System.out.println(last);
-                // so its with the string
+                //if its a string then you need to parse each double
                 String ret2 = last;
                 ret2 = ret2.replaceAll(",", "");
-                // System.out.println("res");
-                // System.out.println(ret2);
-
                 Double fin = Double.parseDouble(ret2);
-                // System.out.println(fin);
                 return fin;
 
             } catch (NumberFormatException b) {

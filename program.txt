@@ -2,6 +2,7 @@ start
 enter BNTX 
 savings=25000
 numStocks=0
+give text reacheshere
 movingTwoHundredAvgPrice=(Current_stock_price + ((Distance_from_twohundred_Day_Simple_Moving_Average * 0.01)* Current_stock_price))
 if(Current_stock_price>movingTwoHundredAvgPrice)start
     give text buy
@@ -29,7 +30,8 @@ loop((movingTwentyAvgPrice) is (movingFiftyAvgPrice) and (savings>0.00))start
         give numStocks
         savings=savings+(Current_stock_price*numStocks)
     end
-    
+
+give text reachesendofscript
 end
 
 end
