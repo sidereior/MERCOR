@@ -105,8 +105,7 @@ still in development such as connection to api's to execute these
 trades, notifications of when you should take specific trades according
 to the script you set, and a web application so that anyone can access
 and use this regardless of their ability to code. If you want to help me
-develop this even further, contact me through my github:
-**[[https://github.com/sidereior]](https://github.com/sidereior)**
+develop this even further, contact me through my email: alexanderlnanda@gmail.com
 
 **[Upcoming Changes]**:
 
