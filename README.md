@@ -3,11 +3,11 @@
 Mercor is the latin word for "I trade" and that is precisely the purpose of this language. Mercor can be used to automate trading strategies,make more accurate predictions based on trading models, or even just learn more about market trends. It is designed to make algorhtmic trading models significantly more easy to develop and straightforward for those to follow who have a limited background in stock analysis or programming. Here are some basic examples of the language in use:
 </p1> 
 
-<p2>
+
 <h2>
 **Ex 1:**
 </h2>
-
+<p2>
 start
 
 x=((3.02\*(5.05-3.92))/4.12412)
@@ -26,11 +26,11 @@ printing, braces/brackets
 </p2>
 
 
-<p3>
+
 <h3>
 **Ex 2:**
 </h3>
-
+<p3>
 start
 
 enter LLNW
@@ -57,11 +57,11 @@ end
 commands, command operations, negative doubles
 <p3>
 
-<p4>
+
 <h4>
 **Ex 3:**
 </h4>
-
+<p4>
 start
 
 enter BNTX
