@@ -1,6 +1,12 @@
+<h1> MERCOR </h1>
+<p1>
 Mercor is the latin word for "I trade" and that is precisely the purpose of this language. Mercor can be used to automate trading strategies,make more accurate predictions based on trading models, or even just learn more about market trends. It is designed to make algorhtmic trading models significantly more easy to develop and straightforward for those to follow who have a limited background in stock analysis or programming. Here are some basic examples of the language in use:
+</p1> 
 
+<p2>
+<h2>
 **Ex 1:**
+</h2>
 
 start
 
@@ -17,7 +23,13 @@ end
 **[Key Takeaways]**: doubles, addition, subtraction, division,
 printing, braces/brackets
 
+</p2>
+
+
+<p3>
+<h3>
 **Ex 2:**
+</h3>
 
 start
 
@@ -43,8 +55,12 @@ end
 
 **[Key Takeaways:]** entering a stock, changing stocks, stock
 commands, command operations, negative doubles
+<p3>
 
+<p4>
+<h4>
 **Ex 3:**
+</h4>
 
 start
 
@@ -91,6 +107,8 @@ buyOneStock
 
 **[Key Takeaways:]** conditionals, ifs/else, text, loops, is/!is
 (notis), and/or, iterations of loops
+</p4>
+
 
 **[Further Development:]{.ul}** There are a lot more commands and a lot
 more stocks you can analyze. ***Find a whole list of supported commands
