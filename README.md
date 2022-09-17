@@ -49,12 +49,10 @@ end
 
 **[Key Takeaways:]** entering a stock, changing stocks, stock
 commands, command operations, negative doubles
-<p3>
+</p3>
 
 
-<h4>
-**Ex 3:**
-</h4>
+<h4> Ex 3: </h4>
 <p4>
 start
 
