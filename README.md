@@ -4,9 +4,7 @@ Mercor is the latin word for "I trade" and that is precisely the purpose of this
 </p1> 
 
 
-<h2>
-**Ex 1:**
-</h2>
+<h2> Ex 1: </h2>
 <p2>
 start
 
@@ -22,14 +20,10 @@ end
 
 **[Key Takeaways]**: doubles, addition, subtraction, division,
 printing, braces/brackets
-
 </p2>
 
 
-
-<h3>
-**Ex 2:**
-</h3>
+<h3> Ex 2: </h3>
 <p3>
 start
 
