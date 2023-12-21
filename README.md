@@ -6,6 +6,7 @@ Mercor is the latin word for "I trade" and that is precisely the purpose of this
 
 <h2> Ex 1: </h2>
 <p2>
+~~~
 start
 
 x=((3.02\*(5.05-3.92))/4.12412)
@@ -13,7 +14,7 @@ x=((3.02\*(5.05-3.92))/4.12412)
 give x
 
 end
-
+~~~
 **Terminal/Output:**
 
 0.8274734973764101
@@ -25,6 +26,7 @@ printing, braces/brackets
 
 <h3> Ex 2: </h3>
 <p3>
+~~~
 start
 
 enter LLNW
@@ -40,7 +42,7 @@ Current_stock_price)
 give smaDist
 
 end
-
+~~~
 **Terminal/Output: (note that this depends on the current values)**
 
 154.67
@@ -54,6 +56,7 @@ commands, command operations, negative doubles
 
 <h4> Ex 3: </h4>
 <p4>
+~~~
 start
 
 enter BNTX
@@ -84,7 +87,7 @@ savings=savings-Current_stock_price
 end
 
 end
-
+~~~
 **Terminal/Output:**
 
 you_should_buy
